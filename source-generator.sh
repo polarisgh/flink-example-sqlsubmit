@@ -14,5 +14,4 @@ echo "Generating sources..."
 create_kafka_topic 1 3 ${KAFKA_TEST_TOPIC}
 
 # Send messages to kafka cluster in json format
-#java -cp target/flink-example-sqlsubmit.jar com.lonton.t8.sqlsubmit.SourceGenerator ${SEND_MSG_SPEED} | ${KAFKA_DIR}/bin/kafka-console-producer.sh --broker-list ${BROKER_LIST} --topic ${KAFKA_TEST_TOPIC}
-java -cp target/flink-example-sqlsubmit.jar com.lonton.t8.sqlsubmit.SourceGenerator ${SEND_MSG_SPEED} | ssh smartai@${KAFKA_MASTER} "${KAFKA_DIR}/bin/kafka-console-producer.sh --broker-list ${BROKER_LIST} --topic ${KAFKA_TEST_TOPIC}"
+java -cp target/flink-example-sqlsubmit.jar com.lonton.t8.sqlsubmit.SourceGenerator ${SEND_MSG_SPEED} | ssh ${SYS_USER}@${KAFKA_MASTER} "${KAFKA_DIR}/bin/kafka-console-producer.sh --broker-list ${BROKER_LIST} --topic ${KAFKA_TEST_TOPIC}"

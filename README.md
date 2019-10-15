@@ -105,3 +105,7 @@ git add .
 git commit -m "first commit"
 git push -u origin master
 ```
+
+### VPN版本特别说明
+
+注意修改配置文件`env.sh`和`src/main/resources/q1.sql`Flink SQL文件。

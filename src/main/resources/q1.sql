@@ -37,10 +37,10 @@ CREATE TABLE pvuv_sink (
     uv BIGINT
 ) WITH (
     'connector.type' = 'jdbc', -- 使用jdbc connector
-    'connector.url' = 'jdbc:mysql://192.168.0.18:3306/flink_test',
+    'connector.url' = 'jdbc:mysql://192.168.0.18:3306/flink_test', -- vpn:jdbc:mysql://192.168.0.16:3306/flink_test
     'connector.table' = 'pvuv_sink',
     'connector.username' = 'root',
-    'connector.password' = '123456',
+    'connector.password' = '123456', -- vpn:lonton
     'connector.write.flush.max-rows' = '1' -- 默认5000条，为了演示改为1条
 );
 
