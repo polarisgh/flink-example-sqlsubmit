@@ -16,19 +16,6 @@
 7. 编译打包项目`mvn clean package`并发布到集群环境下或者客户机，e.g. `LTSR005 /home/smartai/software/flink-example-sqlsubmit`。
 8. 给脚本赋值权限`chmod 755 *.sh`。
 
-注：MySQL DLL脚本如下：
-
-```sql
-CREATE DATABASE IF NOT EXISTS flink_test default character set utf8 COLLATE utf8_general_ci;
-use flink_test;
-drop table IF EXISTS  pvuv_sink;
-CREATE TABLE pvuv_sink (
-    dt VARCHAR(32),
-    pv BIGINT(20),
-    uv BIGINT(20)
-)ENGINE=InnoDB AUTO_INCREMENT=556536 DEFAULT CHARSET=utf8 COMMENT='埋点统计表';
-```
-
 ## 步骤
 ```
 # cygwin
@@ -80,6 +67,7 @@ sudo service ssh restart # linux
 
 ## 补充
 
+### kafka相关操作
 ```shell
 # 进入kafka安装目录
 cd ~/modules/kafka_2.11-0.11.0.3
@@ -91,7 +79,17 @@ bin/kafka-topics.sh --delete --zookeeper 192.168.0.15:2181,192.168.0.16:2181,192
 bin/kafka-topics.sh --zookeeper 192.168.0.15:2181,192.168.0.16:2181,192.168.0.17:2181 --create --topic user_behavior --replication-factor 1 --partitions 3
 ```
 
+### MySQL相关SQL语句
 ```sql
+CREATE DATABASE IF NOT EXISTS flink_test default character set utf8 COLLATE utf8_general_ci;
+use flink_test;
+drop table IF EXISTS  pvuv_sink;
+CREATE TABLE pvuv_sink (
+    dt VARCHAR(32),
+    pv BIGINT(20),
+    uv BIGINT(20)
+)ENGINE=InnoDB AUTO_INCREMENT=556536 DEFAULT CHARSET=utf8 COMMENT='埋点统计表';
+
 select * from pvuv_sink limit 100;
 select count(*) from pvuv_sink;
 delete from pvuv_sink;
