@@ -53,8 +53,8 @@ ssh smartai@LTSR007
 ### SSH访问慢解决方法
 ```shell
 # 修改配置文件sshd_config（cygwin - vi /etc/sshd_config）/（linux - sudo vi /etc/ssh/ssh_config） 
-# （1）修改"UseDNS"的值为"no"
-# （2）修改"GSSAPIAuthentication"的值为"no"
+# UseDNS no
+# GSSAPIAuthentication no
 
 # 修改server上nsswitch.conf文件
 sudo vi /etc/nsswitch.conf
@@ -93,4 +93,15 @@ CREATE TABLE pvuv_sink (
 select * from pvuv_sink limit 100;
 select count(*) from pvuv_sink;
 delete from pvuv_sink;
+```
+
+### 上传工程到GitHub过程（Git Bash）
+```shell
+# gitHub上创建空的仓库flink-example-sqlsubmit
+cd /g/tmp/flink-example-sqlsubmit
+git init
+git remote add origin git@github.com:polarisgh/flink-example-sqlsubmit.git
+git add .
+git commit -m "first commit"
+git push -u origin master
 ```
